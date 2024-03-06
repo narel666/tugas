@@ -1,18 +1,31 @@
-nama = input("Masukkan nama anda: ")
-hari_kerja = int(input("Masukkan jumlah hari kerja: "))
-hari_kerja_perbulan = 26
-gaji = 6000000
+nama_karyawan = input("Masukkan nama anda: ")
+while True:
+    try:
+        hari_kerja = int(input("Hari Anda Kerja Dalam Sebulan (1-30): "))
+        if 1 <= hari_kerja <= 30:
+            break
+        else:
+            print("Error: Jumlah hari kerja tidak valid.")
+    except ValueError:
+        print("Error: Masukkan angka.")
 
-if hari_kerja > hari_kerja_perbulan:
-    lembur = (hari_kerja - hari_kerja_perbulan) * 200000
+hari_kerja_sebulan = 24
+gaji = 4000000
+
+if hari_kerja > hari_kerja_sebulan:
+    gaji_lembur = (hari_kerja - hari_kerja_sebulan) * 200000
 else:
-    lembur = 0
+    gaji_lembur = 0
 
-total_gaji = (hari_kerja / hari_kerja_perbulan) * gaji
-total_gaji += lembur
+gaji_anda = (hari_kerja / hari_kerja_sebulan) * gaji
+total_gaji = gaji_anda + gaji_lembur
 
-# Menggunakan string formatting untuk menambahkan titik sebagai pemisah ribuan
-total_gaji_formatted = "{:,.2f}".format(total_gaji)
+gaji_anda = f"{gaji_anda:,.2f}"
+gaji_lembur = f"{gaji_lembur:,.2f}"
+total_gaji = f"{total_gaji:,.2f}"
 
-print("\nNama:", nama)
-print("Total gaji yang diterima adalah: Rp.", total_gaji_formatted)
+print("\nNama karyawan:", nama_karyawan)
+print("Hari kerja:", hari_kerja)
+print("Gaji anda:", gaji_anda)
+print("Gaji lembur:", gaji_lembur)
+print("total:", total_gaji)
